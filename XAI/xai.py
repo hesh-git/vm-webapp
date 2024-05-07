@@ -7,7 +7,7 @@ from XAI.segmentation_model import get_deepseg, load_images, get_xai_segmentatio
 from XAI.explain import get_neuroxai, get_neuroxai_cnn
 
 
-def generate_xai(mri_vol,s_model):
+def generate_xai(mri_vol):
 
     # NeuroXAI parameters
     DIMENSION = "3d"
@@ -25,7 +25,7 @@ def generate_xai(mri_vol,s_model):
         IMG_SHAPE = (128, 128, 128)
 
         # get the segmentation model
-        # s_model = two_decoder_unet_model(128,128,128,4,4,WEIGHTS= "weights/dual_decoder_simsiam_3d_unet_weights.hdf5")
+        s_model = two_decoder_unet_model(128,128,128,4,4,WEIGHTS= "weights/dual_decoder_simsiam_3d_unet_weights.hdf5")
         LAYER_NAME = i
         model = get_xai_segmentation_model(s_model, LAYER_NAME)
         
